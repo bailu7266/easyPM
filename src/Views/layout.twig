@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div style="border: solid 1px">
+        <a href="/equipment"><span style="padding: 10px">资产</span></a>
+        <a href="/inventory"><span style="padding: 10px">库存</span></a>
+        {% if login != 0 %}
+            <a href="/my-equipment"><span style="padding: 10px">我的资产</span></a>
+        {% endif %}
+        <div style="float:right; text-align: right; padding-right: 20px">
+            {% if login == 0 %}
+                <a href="/login">登录</a>
+            {% else %}
+                <a href="/{{userName}}">{{ userName }}</a>
+            {% endif %}
+        </div>
+        <hr>
+        <form style="clear:both" action="/property/search" method="get">
+            <label>Title</label>
+            <input type="text" name="title">
+            <label>Owner</label>
+            <input type="text" name="owner">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

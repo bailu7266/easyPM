@@ -1,0 +1,39 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    {% if errorMessage is defined %}
+        <strong>{{ errorMessage }}</strong>
+    {% endif %}
+    <form action="/login" method="post">
+    <fieldset style="width: 400px">
+    <legend>注册新用户</legend>
+        <p><label>用户名: </label>
+        <input type="text" name="username">
+        {% if NameExisted != 0 %}
+            <span style="color: red">该用户已经注册</span>
+        {% elseif NameIsEmpty != 0 %}
+            <span style="color: red">用户名不能为空</span>
+        {% endif %}
+        <br/></p>
+        <p><label>Email: </label>
+        <input type="text" name="email">
+        {% if EmailExisted != 0 %}
+            <span style="color: red">该邮箱已被注册</span>
+        {% elseif EmailIsEmpty != 0 %}
+            <span style="color: red">邮箱地址不能为空</span>
+        {% endif %}
+        <br/></p>
+        <p><label>Password: </label>
+        <input type="password" name="password">
+        {% if PswdError != 0 %}
+            <span style="color: red">{{ pswdError }}</span>
+        {% endif %}
+        <br/></p>
+        <p><input type="submit"><br/></p>
+    </fieldset>
+    </form>
+{% endblock %}

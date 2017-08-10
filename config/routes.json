@@ -1,0 +1,53 @@
+{
+    "equipment/:page": {
+        "controller": "Equipment",
+        "method": "getAllWithPage",
+        "params": {
+            "page": "number"
+        }
+    },
+
+    "equipment": {
+        "controller": "Equipment",
+        "method": "getAll"
+    },
+
+    "equipment/:id": {
+        "controller": "Equipment",
+        "method": "get",
+        "params": {
+            "id": "number"
+        }
+    },
+
+    "equipment/search": {
+        "controller": "Equipment",
+        "method": "search"
+    },
+
+    "login": {
+        "controller": "User",
+        "method": "login"
+    },
+
+    "inventory": {
+        "controller": "Inventory",
+        "method": "getByUser" ,
+        "login": true
+    },
+
+    "inventory/:id": {
+        "controller": "Inventory",
+        "method": "get",
+        "login": true,
+        "params": {
+            "id": "number"
+        }
+    },
+
+    "my-equipment": {
+        "controller": "Equipment",
+        "method": "getByUser",
+        "login": true
+    }
+}

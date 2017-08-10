@@ -1,0 +1,11 @@
+{
+    "database": {
+        "driver": "pgsql",
+        "dbname": "easypm",
+        "host": "localhost",
+        "user": "luke",
+        "password": "dwbl99"
+    },
+
+    "log": "/var/log/easypm.log"
+}

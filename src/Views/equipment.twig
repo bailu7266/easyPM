@@ -1,0 +1,26 @@
+{% extends 'layout.twig'}
+
+{% block title %}
+    {{ equipment.name}}
+{% endlock %}
+
+{% block content %}
+
+<h2>{{ equipment.name }}</h2>
+<h3>{{ equipment.owner }}</h3>
+<hr>
+<p>
+<strong>资产编码</strong> {{ property.u_id }}
+</p>
+<h3>资产描述<h3/>
+<p>
+{{ equipment.description }}
+</p>
+<hr>
+<h3>Actions</h3>
+<form method="post" action="/equipment/{{ equipment.id }}/apply">
+<input type="submit" value="Apply">
+</form>
+<form method="post" action="/equipment/{{ equipment.id }}/release">
+<input type="submit" value="Release">
+</form>
