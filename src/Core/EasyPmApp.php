@@ -4,10 +4,12 @@
 // （Dependency Injection)
 
 namespace EasyPM\Core;
+
 use PDO;
 use Exception;
 use esayPM\Exceptions\NotFoundException;
 use esayPM\Exceptions\DbException;
+use easyPM\Core\Config;
 use Monolog\Logger;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
@@ -15,11 +17,13 @@ use Monolog\Handler\StreamHandler;
 
 require_once 'Config.php';
 
-class EasyPmApp {
+class EasyPmApp
+{
     private $config;
     protected $pdo;
     protected $log;
     protected $view;
+    protected $dbready = false;
 
     public function __construct() {
         $this->config = new Config();
@@ -58,11 +62,17 @@ class EasyPmApp {
         }
     }
 
-    public function getView() { return $this->view; }
+    public function getView() {
+        return $this->view;
+    }
 
-    public function getLog() { return $this->log; }
+    public function getLog() {
+        return $this->log;
+    }
 
     public function getPDO() { return $this->pdo; }
-}
 
-?>
+    public function isDbInitialized() : bool { return $this->dbready === true; }
+
+    public function setDbReady() { $this->dbready = true; }
+}

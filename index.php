@@ -14,8 +14,19 @@ use easyPM\Core\EasyPmApp;
 
 require_once __DIR__ . '/vendor/autoload.php';
 // require_once __DIR__ . '/src/Core/EasyPmApp.php';
+require_once __DIR__ . "/init.php";
 
+if （
 $APP_GLOBALS = new EasyPmApp();
+if (!($APP_GLOBALS->isDbInitialized())) {
+    try {
+        initDatabase($APP_GLOBALS);
+    } catch (DbExceipt $e) {
+        echo "Database Error: " . $e->getMessage();
+        exit(-1);
+    }
+}
+
 $router = new Router($APP_GLOBALS);
 
 // $request = new Request();
