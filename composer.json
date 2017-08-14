@@ -1,19 +1,23 @@
 {
-    "name": "ken-book/easyPM",
-    "description": "An easy property management tool.",
-    "license": "Apache-2.0",
-    "type": "project",
+    "name": "k-book/easyPM",
+    "description": "An easy equipment management tool.",
+    "license": "",
+    "type": "Excercise",
     "authors": [{
         "name": "Bai Lu",
-        "email": "bailu@k-book.cn"
+        "email": "bailu7266@gmail.com"
     }],
     "require": {
         "monolog/monolog": "^1.23",
-        "twig/twig": "^2.4"
+        "twig/twig": "^2.4",
+        "twbs/bootstrap": "^3.3"
     },
     "autoload": {
         "psr-4": {
             "easyPM\\": "src"
         }
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.0"
     }
 }
