@@ -14,3 +14,5 @@ composer
 composer.lock
 #exclude Netbeans project files
 nbproject
+#exclude test directory
+test

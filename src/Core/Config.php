@@ -6,9 +6,11 @@ use easyPM\Exceptions\NotFoundException;
 
 // require_once __DIR__ . '/../Exceptions/NotFoundException.php';
 
-class Config {
+class Config
+{
     private $data;
-    public function __construct() {
+    public function __construct()
+    {
         try {
             $json = file_get_contents(
                 __DIR__ . '/../../config/easypm.json'
@@ -18,8 +20,7 @@ class Config {
         }
 
         $this->data = json_decode($json, true);
-        if (!(($json_err = json_last_error()) === JSON_ERROR_NONE))
-        {
+        if (!(($json_err = json_last_error()) === JSON_ERROR_NONE)) {
             var_dump($json);
             echo "<br/>Can't decode json file because of:<br/>";
             switch ($json_err) {
@@ -67,7 +68,8 @@ class Config {
         }
     }
 
-    public function get($key) {
+    public function get($key)
+    {
         if (!isset($this->data[$key])) {
             throw new NotFoundException("Key $key not in config.");
         }

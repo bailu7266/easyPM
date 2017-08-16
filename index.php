@@ -1,4 +1,4 @@
-?php
+<?php
 
 /**
 // <@category:>Inde</@category>
@@ -13,21 +13,29 @@ use easyPM\Core\Request;
 use easyPM\Core\EasyPmApp;
 
 require_once __DIR__ . '/vendor/autoload.php';
-// require_once __DIR__ . '/src/Core/EasyPmApp.php';
+require_once __DIR__ . '/src/Core/EasyPmApp.php';
 require_once __DIR__ . "/init.php";
 
-if （
-$APP_GLOBALS = new EasyPmApp();
-if (!($APP_GLOBALS->isDbInitialized())) {
+session_start();
+
+if (!isset($_SESSION['easyPmApp'])) {
+    $easyPmApp = new EasyPmApp();
+    $_SESSION['easyPmApp'] = $easyPmApp;
+} else {
+    $easyPmApp = $_SESSION['easyPmApp'];
+}
+
+
+if (!($easyPmApp->isDbInitialized())) {
     try {
-        initDatabase($APP_GLOBALS);
+        initDatabase($easyPmApp);
     } catch (DbExceipt $e) {
         echo "Database Error: " . $e->getMessage();
         exit(-1);
     }
 }
 
-$router = new Router($APP_GLOBALS);
+$router = new Router($easyPmApp);
 
 // $request = new Request();
 // var_dump($request);
